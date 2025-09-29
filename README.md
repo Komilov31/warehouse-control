@@ -103,6 +103,8 @@ WarehouseControl — это мини-система для учета товар
 2. Запустите: 
 ```bash
     git clone https://github.com/Komilov31/warehouse-control.git
+    cd warehouse-control
+    cp .env.example .env #редактируйте .env файл
     docker-compose up -d
 ```
  — поднимет PostgreSQL и Go-приложение.
