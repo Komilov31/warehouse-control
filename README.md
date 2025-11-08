@@ -103,13 +103,21 @@ WarehouseControl — это мини-система для учета товар
 2. Запустите: 
 ```bash
     git clone https://github.com/Komilov31/warehouse-control.git
-    cd warehouse-control
-    cp .env.example .env #редактируйте .env файл
-    docker-compose up -d
 ```
- — поднимет PostgreSQL и Go-приложение.
+```bash
+    cd warehouse-control
+```
+```bash
+    cp .env.example .env #редактируйте .env файл
+```
+```bash
+    docker-compose up -d # поднимет PostgreSQL и Go-приложение.
+```
+ 
 3. Приложение доступно на `http://localhost:8080`.
+
 4. UI: Откройте `http://localhost:8080/static/login.html`.
+
 5. Миграции применятся автоматически (или вручную через `docker-compose exec app goose up`).
 
 Swagger: `http://localhost:8080/swagger/index.html`.
@@ -178,10 +186,10 @@ curl -X GET http://localhost:8080/items/1/history \
 
 
 ## UI-интерфейс
-- `http://localhost:8080/static/login.html`: Выбор пользователя/роли, вход, получение токена.
-- `http://localhost:8080/static/main.html`: Таблица товаров (CRUD-формы, если права), колонка с историей по клику.
+- `http://localhost:8080/login.html`: Выбор пользователя/роли, вход, получение токена.
+- `http://localhost:8080/main.html`: Таблица товаров (CRUD-формы, если права), колонка с историей по клику.
 
 ## Ограничения и замечания
 - Триггеры в PostgreSQL для истории — антипаттерн: усложняют тестирование и миграции. В реальности используйте application-level логирование.
-- Тестирование: Запущены unit-тесты в `handler_test.go`.
+- Тестирование: Написаны unit-тесты в `internal/handler/handler_test.go`.
 
